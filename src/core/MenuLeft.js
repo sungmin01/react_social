@@ -71,20 +71,28 @@ class MenuLeft extends Component {
                 { isAuthenticated() ? this.renderAuthenticated() : this.renderPleaseLogin() }
                 <ul className="menu_left">
                     <li>
-                        <i className="icon ion-ios-paper" style={{color : "#8dc63f"}}></i>
+                        <i className="icon ion-ios-home" style={{color : "#8dc63f"}}></i>
+                        <Link className="" to="/"> Home</Link>
+                    </li>
+                    <li>
+                        <i className="icon ion-ios-paper" style={{ color: "#8dc63f" }}></i>
                         <Link className="" to={`/user/mynewsfeed/${user._id}`}> My Newsfeed</Link>
                     </li>
                     <li>
-                        <i className="icon ion-ios-contacts" style={{color : "#ee2a7b"}}></i> Followers
+                        <i className="icon ion-ios-contacts" style={{color : "#ee2a7b"}}></i>
+                        <Link className="" to="/followers"> Followers</Link>
                     </li>
                     <li>
-                        <i className="icon ion-ios-contacts" style={{ color: "#ee2a7b" }}></i> Following
+                        <i className="icon ion-ios-contacts" style={{ color: "#ee2a7b" }}></i>
+                        <Link className="" to="/following"> Following</Link>
                     </li>
                     <li>
-                        <i className="icon ion-ios-images" style={{color : "#1c75bc"}}></i> My Images
+                        <i className="icon ion-ios-images" style={{color : "#1c75bc"}}></i>
+                        <Link className="" to="/gallery"> Gallery</Link>
                     </li>
                     <li>
-                        <i className="icon ion-ios-videocam" style={{color : "#9e1f63"}}></i> My Videos
+                        <i className="icon ion-ios-videocam" style={{color : "#9e1f63"}}></i>
+                        <Link className="" to="/videos"> Videos</Link>
                     </li>
                 </ul>
             </div>

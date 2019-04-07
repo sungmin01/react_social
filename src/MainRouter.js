@@ -55,6 +55,10 @@ class MainRouter extends Component {
                 {backdrop}
                 <Switch>
                     <Route exact path="/" component={Home} />
+                    <Route path="/followers" component={Home} />
+                    <Route path="/following" component={Home} />
+                    <Route path="/gallery" component={Home} />
+                    <Route path="/videos" component={Home} />
                     <PrivateRoute exact path="/admin" component={Admin} />
                     <Route exact path="/forgot-password" component={ForgotPassword} />
                     <Route
@@ -78,7 +82,7 @@ class MainRouter extends Component {
                         component={EditProfile}
                     />
                     <PrivateRoute exact path="/user/:userId" component={Profile} />
-                    <PrivateRoute exact path="/user/mynewsfeed/:userId" component={MyNewsFeed} />
+                    <PrivateRoute exact path="/user/mynewsfeed/:userId" component={Home} />
                 </Switch>
                 <Footer />
             </div>
