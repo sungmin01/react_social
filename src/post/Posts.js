@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import { list } from "./apiPost";
 import DefaultPost from "../images/mountains.jpg";
+import DefaultProfile from "../images/avatar.jpg";
+import LoadingIamge from "../images/loading.gif";
 import { Link } from "react-router-dom";
 
 class Posts extends Component {
@@ -58,7 +60,7 @@ class Posts extends Component {
                                   src={`${process.env.REACT_APP_API_URL}/user/photo/${
                                       post.postedBy._id
                                   }`}
-                                  onError={e => e.target.style.display = 'none'}
+                                  onError={i => (i.target.src = `${DefaultProfile}`)}
                                   alt={post.postedBy.name}
                               />
                               <p className="font-italic mark">
@@ -89,11 +91,13 @@ class Posts extends Component {
     };
 
     render() {
-        const { posts } = this.state;
+        const { posts } = this.state; // when there is no posts? and when there are posts but loading?
         return (
             <div className="container">
                 <h2 className="mt-5 mb-5">
-                    {!posts.length ? "No more posts!" : ""}
+                    {!posts.length ? (<div className="text-center">
+                         <img src = {`${LoadingIamge}`} alt="loading"/>
+                    </div>) : ""}
                 </h2>
 
                 {this.renderPosts(posts)}

@@ -1,8 +1,10 @@
-import React from "react";
+import React, {Component} from "react";
 import { Route, Switch } from "react-router-dom";
 import Home from "./core/Home";
 import Footer from "./core/Footer";
-import Menu from "./core/Menu";
+import Toolbar from './core/Toolbar/Toolbar';
+import SideDrawer from './core/SideDrawer/SideDrawer';
+import Backdrop from './core/Backdrop/Backdrop';
 import Signup from "./user/Signup";
 import Signin from "./user/Signin";
 import Profile from "./user/Profile";
@@ -12,14 +14,39 @@ import FindPeople from "./user/FindPeople";
 import NewPost from "./post/NewPost";
 import EditPost from "./post/EditPost";
 import SinglePost from "./post/SinglePost";
+import MyNewsFeed from "./core/MyNewsFeed";
 import PrivateRoute from "./auth/PrivateRoute";
 import ForgotPassword from "./user/ForgotPassword";
 import ResetPassword from "./user/ResetPassword";
 import Admin from "./admin/Admin";
 
-const MainRouter = () => (
+class MainRouter extends Component {
+          state = {
+                 sideDrawerOpen: false
+               };
+
+          drawerToggleClickHandler = () => {
+          this.setState((prevState) => {
+            return {sideDrawerOpen: !prevState.sideDrawerOpen};
+          });
+        };
+
+        backdropClickHandler = () => {
+          this.setState({sideDrawerOpen: false});
+        };
+
+render() {
+      let backdrop;
+
+      if (this.state.sideDrawerOpen) {
+        backdrop = <Backdrop click={this.backdropClickHandler} />
+    }
+
+    return (
     <div>
-        <Menu />
+        <Toolbar drawerClickHandler={this.drawerToggleClickHandler} />
+        <SideDrawer show={this.state.sideDrawerOpen} />
+            {backdrop}
         <Switch>
             <Route exact path="/" component={Home} />
             <PrivateRoute exact path="/admin" component={Admin} />
@@ -44,11 +71,13 @@ const MainRouter = () => (
                 path="/user/edit/:userId"
                 component={EditProfile}
             />
-            <PrivateRoute exact path="/findpeople" component={FindPeople} />
             <PrivateRoute exact path="/user/:userId" component={Profile} />
+            <PrivateRoute exact path="/user/mynewsfeed/:userId" component={MyNewsFeed} />
         </Switch>
         <Footer/>
     </div>
-);
+            );
+        }
+    }
 
 export default MainRouter;

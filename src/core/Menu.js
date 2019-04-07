@@ -1,24 +1,28 @@
 import React from "react";
 import { Link, withRouter } from "react-router-dom";
 import { signout, isAuthenticated } from "../auth";
+import DownArrow from "../images/down-arrow.png";
 
 const isActive = (history, path) => {
-    if (history.location.pathname === path) return { color: "yellow" };
+    if (history.location.pathname === path) return { color: "#27aae1" };
     else return { color: "#ffffff" };
 };
 
 const Menu = ({ history }) => (
     <div className="top-nav">
       <div className="nav-inside">
-        <span>Logo</span>
-        <ul className="nav">
+        <span>React Social</span>
+        <ul className="nav" style={{float: "right", margin : "-8px 0px 0px 0px"}}>
             <li className="nav-item">
                 <Link
                     className="nav-link"
                     style={isActive(history, "/")}
                     to="/"
                 >
-                    Home
+                    Home<span> </span>
+                    <span>
+                      <img src={`${DownArrow}`}/>
+                    </span>
                 </Link>
             </li>
 
@@ -28,17 +32,10 @@ const Menu = ({ history }) => (
                     style={isActive(history, "/users")}
                     to="/users"
                 >
-                    Users
-                </Link>
-            </li>
-
-            <li className="nav-item">
-                <Link
-                    to={`/post/create`}
-                    style={isActive(history, `/post/create`)}
-                    className="nav-link"
-                >
-                    Create Post
+                    Users<span> </span>
+                    <span>
+                      <img src={`${DownArrow}`}/>
+                    </span>
                 </Link>
             </li>
 
@@ -50,7 +47,10 @@ const Menu = ({ history }) => (
                             style={isActive(history, "/signin")}
                             to="/signin"
                         >
-                            Sign In
+                            Sign In<span> </span>
+                            <span>
+                              <img src={`${DownArrow}`}/>
+                            </span>
                         </Link>
                     </li>
                     <li className="nav-item">
@@ -59,7 +59,10 @@ const Menu = ({ history }) => (
                             style={isActive(history, "/signup")}
                             to="/signup"
                         >
-                            Sign Up
+                            Sign Up<span> </span>
+                            <span>
+                              <img src={`${DownArrow}`}/>
+                            </span>
                         </Link>
                     </li>
                 </>
@@ -72,23 +75,16 @@ const Menu = ({ history }) => (
                         style={isActive(history, `/admin`)}
                         className="nav-link"
                     >
-                        Admin
+                        Admin<span> </span>
+                        <span>
+                          <img src={`${DownArrow}`}/>
+                        </span>
                     </Link>
                 </li>
             )}
 
             {isAuthenticated() && (
                 <>
-                    <li className="nav-item">
-                        <Link
-                            to={`/findpeople`}
-                            style={isActive(history, `/findpeople`)}
-                            className="nav-link"
-                        >
-                            Find People
-                        </Link>
-                    </li>
-
                     <li className="nav-item">
                         <Link
                             to={`/user/${isAuthenticated().user._id}`}
@@ -98,7 +94,10 @@ const Menu = ({ history }) => (
                             )}
                             className="nav-link"
                         >
-                          My Profile
+                          My Profile<span> </span>
+                          <span>
+                            <img src={`${DownArrow}`}/>
+                          </span>
                         </Link>
                     </li>
 
@@ -111,7 +110,10 @@ const Menu = ({ history }) => (
                             }
                             onClick={() => signout(() => history.push("/"))}
                         >
-                            Sign Out
+                            Sign Out<span> </span>
+                            <span>
+                              <img src={`${DownArrow}`}/>
+                            </span>
                         </span>
                     </li>
                 </>

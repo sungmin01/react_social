@@ -12,8 +12,7 @@ class StatusBar extends Component {
             error: "",
             user: {},
             fileSize: 0,
-            loading: false,
-            redirectToProfile: false
+            loading: false
         };
     }
 
@@ -50,9 +49,11 @@ class StatusBar extends Component {
 
     clickSubmit = event => {
         event.preventDefault();
-        this.setState({ loading: true });
 
-        if (this.isValid()) {
+        if (!isAuthenticated()) { //
+            alert("Please Login First!");
+        } else if (this.isValid()){
+
             const userId = isAuthenticated().user._id;
             const token = isAuthenticated().token;
 
@@ -61,9 +62,9 @@ class StatusBar extends Component {
                 else {
                     this.setState({
                         loading: false,
-                        body: "",
-                        redirectToProfile: true
+                        body: ""
                     });
+                    window.location.reload();
                 }
             });
         }
@@ -71,16 +72,7 @@ class StatusBar extends Component {
 
     newPostForm = (body) => (
         <form>
-            <div className="form-group">
-                <input
-                    onChange={this.handleChange("photo")}
-                    type="file"
-                    accept="image/*"
-                    className="form-control"
-                />
-            </div>
-
-            <div className="form-group">
+            <div className="form-group" style={{margin : "50px 0 25px 0"}}>
                 <textarea
                     onChange={this.handleChange("body")}
                     type="text"
@@ -90,6 +82,11 @@ class StatusBar extends Component {
                 />
             </div>
 
+            <input
+                onChange={this.handleChange("photo")}
+                type="file"
+                accept="image/*"
+            />
             <button
                 onClick={this.clickSubmit}
                 className="btn btn-raised btn-primary"
@@ -105,13 +102,8 @@ class StatusBar extends Component {
             photo,
             user,
             error,
-            loading,
-            redirectToProfile
+            loading
         } = this.state;
-
-        if (redirectToProfile) {
-            return <Redirect to={`/user/${user._id}`} />;
-        }
 
         return (
             <div className="container">

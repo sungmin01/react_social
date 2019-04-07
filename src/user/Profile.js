@@ -171,6 +171,39 @@ class Profile extends Component {
                         />
                     </div>
                 </div>
+                <div className="row">
+                    {posts.slice(0, this.state.visible).map((post, i) => {
+
+                        return (
+                            <div className="main-card" key={i}>
+                                <div className="main-card-detail mt-3">
+                                  <div className="img-wrap">
+                                    <img
+                                        src={`${process.env.REACT_APP_API_URL}/post/photo/${
+                                              post._id}`
+                                          }
+                                        alt={post.title}
+                                        onError={e => e.target.style.display = 'none'}
+                                        className="img-inside"
+                                    />
+                                  </div>
+                                    <h5 className="card-title">{post.title}</h5>
+                                    <p className="card-text">
+                                        {post.body.substring(0, 100)}
+                                    </p>
+                                    <br />
+                                    <Link
+                                        to={`/post/${post._id}`}
+                                        className="btn btn-raised btn-primary btn-sm"
+                                    >
+                                        Read more
+                                    </Link>
+                                    <hr/>
+                                </div>
+                            </div>
+                          );
+                      })}
+                  </div>
             </div>
         );
     }

@@ -3,6 +3,7 @@ import { isAuthenticated } from "../auth";
 import { read, update, updateUser } from "./apiUser";
 import { Redirect } from "react-router-dom";
 import DefaultProfile from "../images/avatar.jpg";
+import LoadingIamge from "../images/loading.gif";
 
 class EditProfile extends Component {
     constructor() {
@@ -201,9 +202,7 @@ class EditProfile extends Component {
                 </div>
 
                 {loading ? (
-                    <div className="jumbotron text-center">
-                        <h2>Loading...</h2>
-                    </div>
+                    <div><img src = {`${LoadingIamge}`} alt="loading"/></div>
                 ) : (
                     ""
                 )}
