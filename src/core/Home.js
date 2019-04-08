@@ -6,6 +6,10 @@ import Posts from '../post/Posts'
 import StatusBar from '../post/StatusBar'
 import MenuLeft from './MenuLeft'
 import MyNewsFeed from './MyNewsFeed'
+import Followers from './Followers'
+import Following from './Following'
+import Gallery from './Gallery'
+import Videos from './Videos'
 
 import { read } from "../user/apiUser";
 import { isAuthenticated } from "../auth";
@@ -21,11 +25,6 @@ class StatusBarAndPosts extends Component {
         )
     }
 }
-
-const Followers = () => <h1>Followers</h1>
-const Following = () => <h1>Following</h1>
-const Gallery = () => <h1>Gallery</h1>
-const Videos = () => <h1>Videos</h1>
 
 class Home extends Component {
     constructor() {
