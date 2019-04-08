@@ -8,6 +8,7 @@ class MyNewsFeed extends Component {
       return (
           <div className="row">
               {posts.map((post, i) => {
+
                   return (
                       <div className="main-card" key={i}>
                           <div className="main-card-detail mt-3">

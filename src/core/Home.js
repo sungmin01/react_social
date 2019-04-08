@@ -69,7 +69,6 @@ class Home extends Component {
     }
 
     render() {
-
         return (
             <div className="row content">
                 <div className="col-md-3 col-sm-5">
@@ -87,7 +86,6 @@ class Home extends Component {
                         <Route path="/gallery" component={Gallery} />
                         <Route path="/videos" component={Videos} />
                     </Switch>
-
                 </div>
                 <div className="col-md-2 col-sm-5"></div>
             </div>
