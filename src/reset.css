@@ -1,0 +1,42 @@
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+  padding: 60px 0 0 0;
+  margin: 0;
+  font-family: 'Lato', sans-serif;
+  font-size: 14px;
+}
+
+h1, h2, h3, h4, h5, h6, ul, ol, li, dl, dt, dd, p, table {
+  margin: 0;
+  padding: 0;
+}
+
+header, main, footer, section, article, aside, nav {
+  display: block;
+}
+
+a {
+  text-decoration: none;
+  color:  inherit;
+}
+
+aimg {
+  border: none;
+}
+
+li {
+  list-style: none;
+}
+
+address, em, i {
+  font-style: normal;
+}
+
+* {
+  box-sizing: border-box;
+}
+
